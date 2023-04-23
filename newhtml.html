@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:template match="/">
+    <html>
+      <head>
+        <title>Movies</title>
+        <style>
+          table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+          }
+          .highlight {
+            background-color: yellow;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>Movies</h1>
+        <table>
+          <tr>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Rating</th>
+          </tr>
+          <xsl:for-each select="movies/movie">
+            <xsl:if test="rating &gt;= 8">
+              <tr>
+                <td><xsl:value-of select="title"/></td>
+                <td><xsl:value-of select="director"/></td>
+                <td class="highlight"><xsl:value-of select="rating"/></td>
+              </tr>
+            </xsl:if>
+            <xsl:if test="rating &lt; 8">
+              <tr>
+                <td><xsl:value-of select="title"/></td>
+                <td><xsl:value-of select="director"/></td>
+                <td><xsl:value-of select="rating"/></td>
+              </tr>
+            </xsl:if>
+          </xsl:for-each>
+        </table>
+      </body>
+    </html>
+  </xsl:template>
+</xsl:stylesheet>
+
+    </body>
+</html>
